@@ -1,7 +1,12 @@
 package geometria;
 
-public abstract sealed class  FiguraGeometrica permits Circulo, Rectangulo {
+import java.io.Serial;
+import java.io.Serializable;
+
+public abstract sealed class FiguraGeometrica implements Serializable permits Circulo, Rectangulo {
     private String color;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public FiguraGeometrica(String color) {
         this.color = color;

@@ -1,11 +1,14 @@
 package geometria;
 
+import java.io.Serial;
 import java.lang.Math;
 
 import static java.lang.Math.pow;
 
 public final class Circulo extends FiguraGeometrica {
     private int radio;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public Circulo(String color, int radio) {
         super(color);

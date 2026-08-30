@@ -1,8 +1,11 @@
 package geometria;
 
+import java.io.Serial;
+
 public final class Rectangulo extends FiguraGeometrica {
-    private int alto;
-    private int ancho;
+    private int alto, ancho;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public Rectangulo(String color, int alto, int ancho) {
         super(color);
