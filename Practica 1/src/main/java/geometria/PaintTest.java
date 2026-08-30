@@ -1,4 +1,5 @@
 package geometria;
+import java.util.Arrays;
 
 public class PaintTest {
 
@@ -6,6 +7,7 @@ public class PaintTest {
         Paint paint = new Paint();
         paint.init();
         String imprimir = "";
+        Arrays.sort(paint.getPaleta(), (a1, a2) -> Integer.compare(a1.area(), a2.area()));
         for (FiguraGeometrica figura : paint.getPaleta()) {
             if (figura.isCirculo()) {
                 Circulo circulo = (Circulo) figura;
