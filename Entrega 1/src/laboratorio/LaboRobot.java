@@ -4,7 +4,7 @@ import robocode.*;
 
 
 public class LaboRobot extends JuniorRobot {
-	private EstrategiaRobot estrategia = new Agresiva();
+    private EstrategiaRobot estrategia = new Pacifista();
 
     @Override
     public void run() {
