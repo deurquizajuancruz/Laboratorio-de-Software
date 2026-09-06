@@ -1,4 +1,4 @@
-package laboratorio;
+package deUrquiza;
 
 public final class Pacifista implements EstrategiaRobot {
     private final int distancia = 250;
@@ -7,17 +7,19 @@ public final class Pacifista implements EstrategiaRobot {
         Da una vuelta con el cañón para detectar enemigos y se empieza a mover
      */
     @Override
-    public void run(LaboRobot robot) {
+    public void run(RobotGuerra robot) {
         robot.setColors(0xffffff, 0xffffff, 0xffffff);
-        robot.turnGunRight(360);
-        robot.ahead(distancia);
+        while (true) {
+            robot.turnGunRight(360);
+            robot.ahead(distancia);
+        }
     }
 
     /*
         Cuando detecta un enemigo, se mueve en diagonal
      */
     @Override
-    public void onScannedRobot(LaboRobot robot) {
+    public void onScannedRobot(RobotGuerra robot) {
         robot.turnTo(robot.scannedAngle + 135);
         robot.ahead(distancia);
     }
@@ -26,7 +28,7 @@ public final class Pacifista implements EstrategiaRobot {
         Si le pegan, se mueve en diagonal desde donde vino la bala
      */
     @Override
-    public void onHitByBullet(LaboRobot robot) {
+    public void onHitByBullet(RobotGuerra robot) {
         robot.turnTo(robot.hitByBulletAngle + 135);
         robot.ahead(distancia);
     }
@@ -35,7 +37,7 @@ public final class Pacifista implements EstrategiaRobot {
         Se despega de la pared en diagonal y sigue huyendo
      */
     @Override
-    public void onHitWall(LaboRobot robot) {
+    public void onHitWall(RobotGuerra robot) {
         robot.turnTo(robot.hitWallAngle + 135);
         robot.ahead(distancia);
     }

@@ -1,12 +1,12 @@
-package laboratorio;
+package deUrquiza;
 
 public sealed interface EstrategiaRobot permits Agresiva, Defensiva, Pacifista {
 
-    void run(LaboRobot robot);
+    void run(RobotGuerra robot);
 
-    void onScannedRobot(LaboRobot robot);
+    void onScannedRobot(RobotGuerra robot);
 
-    void onHitByBullet(LaboRobot robot);
+    void onHitByBullet(RobotGuerra robot);
 
-    void onHitWall(LaboRobot robot);
+    void onHitWall(RobotGuerra robot);
 }

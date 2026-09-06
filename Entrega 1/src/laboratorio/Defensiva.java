@@ -1,14 +1,16 @@
-package laboratorio;
+package deUrquiza;
 
-public final class Defensiva implements EstrategiaRobot {
+public record Defensiva() implements EstrategiaRobot {
 
     /*
         Gira el cañon 10° a propósito: para escanear y detectar enemigos más rápidamente
      */
     @Override
-    public void run(LaboRobot robot) {
+    public void run(RobotGuerra robot) {
         robot.setColors(0x355e92, 0x15263a, 0x000000);
-        robot.turnGunRight(10);
+        while (true) {
+            robot.turnGunRight(10);
+        }
     }
 
     /*
@@ -16,7 +18,7 @@ public final class Defensiva implements EstrategiaRobot {
         Si está muy cerca, se aleja más distanica, sino se aleja menos
      */
     @Override
-    public void onScannedRobot(LaboRobot robot) {
+    public void onScannedRobot(RobotGuerra robot) {
         robot.turnTo(robot.scannedAngle + 90);
         robot.ahead(robot.scannedDistance < 200 ? 150 : 80);
     }
@@ -26,7 +28,7 @@ public final class Defensiva implements EstrategiaRobot {
         Después se mueve de forma perpendicular
      */
     @Override
-    public void onHitByBullet(LaboRobot robot) {
+    public void onHitByBullet(RobotGuerra robot) {
         robot.turnGunTo(robot.hitByBulletAngle);
         robot.fire(1.5);
         robot.turnTo(robot.hitByBulletAngle + 90);
@@ -37,7 +39,7 @@ public final class Defensiva implements EstrategiaRobot {
         Se despega de la pared en diagonal
      */
     @Override
-    public void onHitWall(LaboRobot robot) {
+    public void onHitWall(RobotGuerra robot) {
         robot.turnTo(robot.hitWallAngle + 135);
         robot.ahead(150);
     }

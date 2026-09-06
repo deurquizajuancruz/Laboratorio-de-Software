@@ -1,14 +1,16 @@
-package laboratorio;
+package deUrquiza;
 
-public final class Agresiva implements EstrategiaRobot {
+public record Agresiva() implements EstrategiaRobot {
 
     /*
         Gira el cañon 10° a propósito: para escanear y detectar enemigos más rápidamente
      */
     @Override
-    public void run(LaboRobot robot) {
+    public void run(RobotGuerra robot) {
         robot.setColors(0x5B4839, 0x222328, 0x485C41);
-        robot.turnGunRight(10);
+        while (true) {
+            robot.turnGunRight(10);
+        }
     }
 
     /*
@@ -16,7 +18,7 @@ public final class Agresiva implements EstrategiaRobot {
         Dispara con toda la potencia y se acerca
      */
     @Override
-    public void onScannedRobot(LaboRobot robot) {
+    public void onScannedRobot(RobotGuerra robot) {
         robot.turnTo(robot.scannedAngle);
         this.fireAllPower(robot);
         robot.ahead(50);
@@ -26,7 +28,7 @@ public final class Agresiva implements EstrategiaRobot {
         Cuando le pegan un balazo, se gira en dirección a donde lo detectó y dispara con toda la potencia
      */
     @Override
-    public void onHitByBullet(LaboRobot robot) {
+    public void onHitByBullet(RobotGuerra robot) {
         robot.turnGunTo(robot.hitByBulletAngle);
         this.fireAllPower(robot);
     }
@@ -37,7 +39,7 @@ public final class Agresiva implements EstrategiaRobot {
      */
 
     @Override
-    public void onHitWall(LaboRobot robot) {
+    public void onHitWall(RobotGuerra robot) {
         robot.back(50);
         robot.turnRight(90);
         robot.turnGunRight(180);
@@ -47,7 +49,7 @@ public final class Agresiva implements EstrategiaRobot {
     /*
         Dispara con toda la potencia (3)
      */
-    private void fireAllPower(LaboRobot robot) {
+    private void fireAllPower(RobotGuerra robot) {
         robot.fire(3);
     }
 }
