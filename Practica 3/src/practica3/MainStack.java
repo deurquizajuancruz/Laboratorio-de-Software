@@ -1,4 +1,4 @@
-package main.java.practica3;
+package practica3;
 
 import java.util.Iterator;
 

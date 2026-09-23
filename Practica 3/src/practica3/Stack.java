@@ -1,13 +1,14 @@
-package main.java.practica3;
+package practica3;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.Iterator;
 
 public class Stack {
     private java.util.ArrayList items;
 
     public Stack() {
-        this.items = new ArrayList<String>();
+        this.items = new ArrayList<Object>();
     }
 
     public void push(Object item) {
@@ -15,9 +16,10 @@ public class Stack {
     }
 
     public Object pop() {
-        Object toBeDeleted = this.items.getLast();
-        this.items.remove(toBeDeleted);
-        return toBeDeleted;
+        if (this.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return this.items.removeLast();
     }
 
     public boolean isEmpty() {
