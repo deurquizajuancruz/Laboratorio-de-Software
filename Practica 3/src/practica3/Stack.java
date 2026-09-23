@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 
 public class Stack {
-    private java.util.ArrayList items;
+    private java.util.ArrayList<Object> items;
 
     public Stack() {
         this.items = new ArrayList<Object>();
@@ -26,23 +26,19 @@ public class Stack {
         return this.items.isEmpty();
     }
 
-    public Iterator getIterator() {
-        return new StackIterator();
-    }
+    public Iterator<Object> getIterator() {
+        return new Iterator<Object>() {
+            private int index = 0;
 
-    private class StackIterator implements Iterator {
-        private int index = 0;
+            public boolean hasNext() {
+                return Stack.this.items.size() > index;
+            }
 
-        @Override
-        public boolean hasNext() {
-            return Stack.this.items.size() > index;
-        }
-
-        @Override
-        public Object next() {
-            Object o = Stack.this.items.get(index);
-            this.index++;
-            return o;
-        }
+            public Object next() {
+                Object o = Stack.this.items.get(index);
+                this.index++;
+                return o;
+            }
+        };
     }
 }
